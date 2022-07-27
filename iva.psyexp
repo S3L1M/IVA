@@ -63,7 +63,7 @@
     <Param val="" valType="str" updates="None" name="tbSerialNo"/>
   </Settings>
   <Routines>
-    <Routine name="trial">
+    <Routine name="grating_acuity">
       <GratingComponent name="GA">
         <Param val="center" valType="str" updates="constant" name="anchor"/>
         <Param val="avg" valType="str" updates="constant" name="blendmode"/>
@@ -95,6 +95,6 @@
     </Routine>
   </Routines>
   <Flow>
-    <Routine name="trial"/>
+    <Routine name="grating_acuity"/>
   </Flow>
 </PsychoPy2experiment>
