@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2022.2.1),
-    on July 28, 2022, at 04:14
+    on July 29, 2022, at 07:23
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -39,9 +39,10 @@ expName = 'iva'  # from the Builder filename that created this script
 expInfo = {
     'participant': f"{randint(0, 999999):06.0f}",
     'session': '001',
-    'start spatial freq': '6',
-    'step spatial freq': '8',
-    'end spatial freq': '46',
+    'stimulus size': '8.5',
+    'start spatial freq': '0.8',
+    'step spatial freq': '1',
+    'end spatial freq': '25.6',
 }
 # --- Show participant info dialog --
 dlg = gui.DlgFromDict(dictionary=expInfo, sortKeys=False, title=expName)
@@ -98,14 +99,14 @@ defaultKeyboard = keyboard.Keyboard(backend='iohub')
 
 # --- Initialize components for Routine "grating_acuity" ---
 GA = visual.GratingStim(
-    win=win, name='GA',
+    win=win, name='GA',units='deg', 
     tex='sqr', mask='circle', anchor='center',
-    ori=0.0, pos=(0, 0), size=(0.5, 0.5), sf=1.0, phase=0.0,
+    ori=0.0, pos=(0, 0), size=(float(expInfo['stimulus size'], float(expInfo['stimulus size']), sf=1.0, phase=0.0,
     color=[1,1,1], colorSpace='rgb',
     opacity=None, contrast=1.0, blendmode='avg',
     texRes=512.0, interpolate=True, depth=0.0)
 # Set experiment start values for variable component spatial_freq
-spatial_freq = int(expInfo['start spatial freq'])
+spatial_freq = float(expInfo['start spatial freq'])
 spatial_freqContainer = []
 
 # Create some handy timers
@@ -113,7 +114,7 @@ globalClock = core.Clock()  # to track the time since experiment started
 routineTimer = core.Clock()  # to track time remaining of each (possibly non-slip) routine 
 
 # set up handler to look after randomisation of conditions etc
-GA_loop = data.TrialHandler(nReps=(int(expInfo['end spatial freq'])-int(expInfo['start spatial freq']))//int(expInfo['step spatial freq']), method='sequential', 
+GA_loop = data.TrialHandler(nReps=(float(expInfo['end spatial freq'])-float(expInfo['start spatial freq']))//float(expInfo['step spatial freq']), method='sequential', 
     extraInfo=expInfo, originPath=-1,
     trialList=[None],
     seed=None, name='GA_loop')
@@ -135,7 +136,7 @@ for thisGA_loop in GA_loop:
     continueRoutine = True
     # update component parameters for each repeat
     GA.setSF(spatial_freq)
-    spatial_freq = spatial_freq+int(expInfo['step spatial freq'])  # Set routine start values for spatial_freq
+    spatial_freq = spatial_freq+float(expInfo['step spatial freq'])  # Set routine start values for spatial_freq
     # keep track of which components have finished
     grating_acuityComponents = [GA]
     for thisComponent in grating_acuityComponents:
@@ -199,7 +200,7 @@ for thisGA_loop in GA_loop:
     thisExp.addData('spatial_freq.routineEndVal', spatial_freq)  # Save end routine value
     # the Routine "grating_acuity" was not non-slip safe, so reset the non-slip timer
     routineTimer.reset()
-# completed (int(expInfo['end spatial freq'])-int(expInfo['start spatial freq']))//int(expInfo['step spatial freq']) repeats of 'GA_loop'
+# completed (float(expInfo['end spatial freq'])-float(expInfo['start spatial freq']))//float(expInfo['step spatial freq']) repeats of 'GA_loop'
 
 
 # --- End experiment ---

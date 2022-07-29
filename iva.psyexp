@@ -7,7 +7,7 @@
     <Param val="auto" valType="str" updates="None" name="Data file delimiter"/>
     <Param val="u'data/%s_%s_%s' % (expInfo['participant'], expName, expInfo['date'])" valType="code" updates="None" name="Data filename"/>
     <Param val="True" valType="bool" updates="None" name="Enable Escape"/>
-    <Param val="{'participant': 'f&quot;{randint(0, 999999):06.0f}&quot;', 'session': '001', 'start spatial freq': '6', 'step spatial freq': '8', 'end spatial freq': '46'}" valType="code" updates="None" name="Experiment info"/>
+    <Param val="{'participant': 'f&quot;{randint(0, 999999):06.0f}&quot;', 'session': '001', 'stimulus size': '8.5', 'start spatial freq': '0.8', 'step spatial freq': '1.4142', 'end spatial freq': '25.6'}" valType="code" updates="None" name="Experiment info"/>
     <Param val="True" valType="bool" updates="None" name="Force stereo"/>
     <Param val="True" valType="bool" updates="None" name="Full-screen window"/>
     <Param val="" valType="str" updates="None" name="HTML path"/>
@@ -81,7 +81,7 @@
         <Param val="(0, 0)" valType="list" updates="constant" name="pos"/>
         <Param val="False" valType="bool" updates="None" name="saveStartStop"/>
         <Param val="spatial_freq" valType="num" updates="set every repeat" name="sf"/>
-        <Param val="(0.5, 0.5)" valType="list" updates="constant" name="size"/>
+        <Param val="(float(expInfo['stimulus size'], float(expInfo['stimulus size'])" valType="list" updates="constant" name="size"/>
         <Param val="" valType="code" updates="None" name="startEstim"/>
         <Param val="time (s)" valType="str" updates="None" name="startType"/>
         <Param val="0.0" valType="code" updates="None" name="startVal"/>
@@ -90,7 +90,7 @@
         <Param val="True" valType="bool" updates="None" name="syncScreenRefresh"/>
         <Param val="sqr" valType="file" updates="constant" name="tex"/>
         <Param val="512" valType="num" updates="constant" name="texture resolution"/>
-        <Param val="from exp settings" valType="str" updates="None" name="units"/>
+        <Param val="deg" valType="str" updates="None" name="units"/>
       </GratingComponent>
       <VariableComponent name="spatial_freq">
         <Param val="False" valType="bool" updates="None" name="disabled"/>
@@ -103,9 +103,9 @@
         <Param val="False" valType="bool" updates="constant" name="saveStartRoutine"/>
         <Param val="True" valType="bool" updates="None" name="saveStartStop"/>
         <Param val="" valType="code" updates="None" name="startEstim"/>
-        <Param val="int(expInfo['start spatial freq'])" valType="code" updates="constant" name="startExpValue"/>
+        <Param val="float(expInfo['start spatial freq'])" valType="code" updates="constant" name="startExpValue"/>
         <Param val="" valType="code" updates="None" name="startFrameValue"/>
-        <Param val="spatial_freq+int(expInfo['step spatial freq'])" valType="code" updates="constant" name="startRoutineValue"/>
+        <Param val="spatial_freq*float(expInfo['step spatial freq'])" valType="code" updates="constant" name="startRoutineValue"/>
         <Param val="time (s)" valType="str" updates="None" name="startType"/>
         <Param val="" valType="code" updates="None" name="startVal"/>
         <Param val="duration (s)" valType="str" updates="None" name="stopType"/>
@@ -122,7 +122,7 @@
       <Param name="endPoints" updates="None" val="[0, 1]" valType="num"/>
       <Param name="isTrials" updates="None" val="False" valType="bool"/>
       <Param name="loopType" updates="None" val="sequential" valType="str"/>
-      <Param name="nReps" updates="None" val="(int(expInfo['end spatial freq'])-int(expInfo['start spatial freq']))//int(expInfo['step spatial freq'])" valType="num"/>
+      <Param name="nReps" updates="None" val="(float(expInfo['end spatial freq'])-float(expInfo['start spatial freq']))//float(expInfo['step spatial freq'])" valType="num"/>
       <Param name="name" updates="None" val="GA_loop" valType="code"/>
       <Param name="random seed" updates="None" val="" valType="code"/>
     </LoopInitiator>
