@@ -1,8 +1,8 @@
-#!/usr/bin/env python
+﻿#!/usr/bin/env python
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2022.2.1),
-    on July 31, 2022, at 16:33
+    on August 01, 2022, at 01:42
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -71,7 +71,7 @@ frameTolerance = 0.001  # how close to onset before 'same' frame
 # --- Setup the Window ---
 win = visual.Window(
     size=[1920, 1080], fullscr=True, screen=0, 
-    winType='pyglet', allowStencil=False,
+    winType='pyglet', allowStencil=True,
     monitor='testMonitor', color=[0,0,0], colorSpace='rgb',
     blendMode='avg', useFBO=True, 
     units='height')
@@ -100,7 +100,7 @@ defaultKeyboard = keyboard.Keyboard(backend='iohub')
 # --- Initialize components for Routine "grating_acuity" ---
 GA = visual.GratingStim(
     win=win, name='GA',units='deg', 
-    tex='sqr', mask='circle', anchor='center',
+    tex='sqr', mask=None, anchor='center',
     ori=0.0, pos=(0, 0), size=(float(expInfo['stimulus size']), float(expInfo['stimulus size'])), sf=1.0, phase=0.0,
     color=[1,1,1], colorSpace='rgb',
     opacity=None, contrast=1.0, blendmode='avg',
@@ -108,6 +108,12 @@ GA = visual.GratingStim(
 # Set experiment start values for variable component spatial_freq
 spatial_freq = float(expInfo['start spatial freq'])
 spatial_freqContainer = []
+aperture = visual.Aperture(
+    win=win, name='aperture',
+    units='deg', size=[float(expInfo['stimulus size'])], pos=(0, 0), ori=0.0,
+    shape='circle', anchor='center'
+)
+aperture.disable()  # disable until its actually used
 
 # Create some handy timers
 globalClock = core.Clock()  # to track the time since experiment started
@@ -138,7 +144,7 @@ for thisGA_loop in GA_loop:
     GA.setSF(spatial_freq)
     spatial_freq = spatial_freq+float(expInfo['step spatial freq'])  # Set routine start values for spatial_freq
     # keep track of which components have finished
-    grating_acuityComponents = [GA]
+    grating_acuityComponents = [GA, aperture]
     for thisComponent in grating_acuityComponents:
         thisComponent.tStart = None
         thisComponent.tStop = None
@@ -176,6 +182,26 @@ for thisGA_loop in GA_loop:
                 GA.frameNStop = frameN  # exact frame index
                 GA.setAutoDraw(False)
         
+# *aperture* updates
+        if aperture.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+            # keep track of start time/frame for later
+            aperture.frameNStart = frameN  # exact frame index
+            aperture.tStart = t  # local t and not account for scr refresh
+            aperture.tStartRefresh = tThisFlipGlobal  # on global time
+            win.timeOnFlip(aperture, 'tStartRefresh')  # time at next scr refresh
+            # add timestamp to datafile
+            thisExp.timestampOnFlip(win, 'aperture.started')
+            aperture.enabled = True
+        if aperture.status == STARTED:
+            # is it time to stop? (based on global clock, using actual start)
+            if tThisFlipGlobal > aperture.tStartRefresh + 5.0-frameTolerance:
+                # keep track of stop time/frame for later
+                aperture.tStop = t  # not accounting for scr refresh
+                aperture.frameNStop = frameN  # exact frame index
+                # add timestamp to datafile
+                thisExp.timestampOnFlip(win, 'aperture.stopped')
+                aperture.enabled = False
+        
         # check for quit (typically the Esc key)
         if endExpNow or defaultKeyboard.getKeys(keyList=["escape"]):
             core.quit()
@@ -198,6 +224,7 @@ for thisGA_loop in GA_loop:
         if hasattr(thisComponent, "setAutoDraw"):
             thisComponent.setAutoDraw(False)
     thisExp.addData('spatial_freq.routineEndVal', spatial_freq)  # Save end routine value
+    aperture.enabled = False  # just in case it was left enabled
     # the Routine "grating_acuity" was not non-slip safe, so reset the non-slip timer
     routineTimer.reset()
 # completed (float(expInfo['end spatial freq'])-float(expInfo['start spatial freq']))//float(expInfo['step spatial freq']) repeats of 'GA_loop'
