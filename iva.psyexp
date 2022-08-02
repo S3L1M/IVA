@@ -202,16 +202,20 @@
     </Routine>
   </Routines>
   <Flow>
-    <LoopInitiator loopType="TrialHandler" name="GA_loop">
-      <Param name="Selected rows" updates="None" val="" valType="str"/>
-      <Param name="conditions" updates="None" val="None" valType="str"/>
-      <Param name="conditionsFile" updates="None" val="" valType="file"/>
+    <LoopInitiator loopType="StairHandler" name="GA_loop">
+      <Param name="N down" updates="None" val="2" valType="num"/>
+      <Param name="N reversals" updates="None" val="" valType="num"/>
+      <Param name="N up" updates="None" val="4" valType="num"/>
       <Param name="endPoints" updates="None" val="[0, 1]" valType="num"/>
       <Param name="isTrials" updates="None" val="False" valType="bool"/>
-      <Param name="loopType" updates="None" val="sequential" valType="str"/>
-      <Param name="nReps" updates="None" val="(float(expInfo['end spatial freq'])-float(expInfo['start spatial freq']))//float(expInfo['step spatial freq'])" valType="num"/>
+      <Param name="loopType" updates="None" val="staircase" valType="str"/>
+      <Param name="max value" updates="None" val="float(expInfo['end spatial freq'])" valType="num"/>
+      <Param name="min value" updates="None" val="0.4" valType="num"/>
+      <Param name="nReps" updates="None" val="4" valType="num"/>
       <Param name="name" updates="None" val="GA_loop" valType="code"/>
-      <Param name="random seed" updates="None" val="" valType="code"/>
+      <Param name="start value" updates="None" val="float(expInfo['start spatial freq'])" valType="num"/>
+      <Param name="step sizes" updates="None" val="[0.8,0.8,0.4,0.4,0.2]" valType="list"/>
+      <Param name="step type" updates="None" val="log" valType="str"/>
     </LoopInitiator>
     <Routine name="grating_acuity"/>
     <Routine name="central_fixation"/>

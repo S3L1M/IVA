@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2022.2.1),
-    on August 02, 2022, at 23:22
+    on August 02, 2022, at 23:58
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -131,24 +131,20 @@ placeholder = visual.TextStim(win=win, name='placeholder',
 globalClock = core.Clock()  # to track the time since experiment started
 routineTimer = core.Clock()  # to track time remaining of each (possibly non-slip) routine 
 
-# set up handler to look after randomisation of conditions etc
-GA_loop = data.TrialHandler(nReps=(float(expInfo['end spatial freq'])-float(expInfo['start spatial freq']))//float(expInfo['step spatial freq']), method='sequential', 
-    extraInfo=expInfo, originPath=-1,
-    trialList=[None],
-    seed=None, name='GA_loop')
+# --------Prepare to start Staircase "GA_loop" --------
+# set up handler to look after next chosen value etc
+GA_loop = data.StairHandler(startVal=float(expInfo['start spatial freq']), extraInfo=expInfo,
+    stepSizes=[0.8,0.8,0.4,0.4,0.2], stepType='log',
+    nReversals=0.0, nTrials=4.0, 
+    nUp=4.0, nDown=2.0,
+    minVal=0.4, maxVal=float(expInfo['end spatial freq']),
+    originPath=-1, name='GA_loop')
 thisExp.addLoop(GA_loop)  # add the loop to the experiment
-thisGA_loop = GA_loop.trialList[0]  # so we can initialise stimuli with some values
-# abbreviate parameter names if possible (e.g. rgb = thisGA_loop.rgb)
-if thisGA_loop != None:
-    for paramName in thisGA_loop:
-        exec('{} = thisGA_loop[paramName]'.format(paramName))
+level = thisGA_loop = float(expInfo['start spatial freq'])  # initialise some vals
 
 for thisGA_loop in GA_loop:
     currentLoop = GA_loop
-    # abbreviate parameter names if possible (e.g. rgb = thisGA_loop.rgb)
-    if thisGA_loop != None:
-        for paramName in thisGA_loop:
-            exec('{} = thisGA_loop[paramName]'.format(paramName))
+    level = thisGA_loop
     
     # --- Prepare to start Routine "grating_acuity" ---
     continueRoutine = True
@@ -313,7 +309,7 @@ for thisGA_loop in GA_loop:
             thisComponent.setAutoDraw(False)
     # using non-slip timing so subtract the expected duration of this Routine
     routineTimer.addTime(-1.000000)
-# completed (float(expInfo['end spatial freq'])-float(expInfo['start spatial freq']))//float(expInfo['step spatial freq']) repeats of 'GA_loop'
+# staircase completed
 
 
 # --- End experiment ---
