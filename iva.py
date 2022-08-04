@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2022.2.1),
-    on August 02, 2022, at 23:22
+    on August 04, 2022, at 22:23
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -150,169 +150,192 @@ for thisGA_loop in GA_loop:
         for paramName in thisGA_loop:
             exec('{} = thisGA_loop[paramName]'.format(paramName))
     
-    # --- Prepare to start Routine "grating_acuity" ---
-    continueRoutine = True
-    # update component parameters for each repeat
-    position = (randchoice([-1, 1])*16, 0)  # Set routine start values for position
-    GA.setPos(position)
-    GA.setSF(spatial_freq)
-    aperture.setPos(position)
-    spatial_freq = spatial_freq+float(expInfo['step spatial freq'])  # Set routine start values for spatial_freq
-    # keep track of which components have finished
-    grating_acuityComponents = [GA, aperture]
-    for thisComponent in grating_acuityComponents:
-        thisComponent.tStart = None
-        thisComponent.tStop = None
-        thisComponent.tStartRefresh = None
-        thisComponent.tStopRefresh = None
-        if hasattr(thisComponent, 'status'):
-            thisComponent.status = NOT_STARTED
-    # reset timers
-    t = 0
-    _timeToFirstFrame = win.getFutureFlipTime(clock="now")
-    frameN = -1
+    # set up handler to look after randomisation of conditions etc
+    trials = data.TrialHandler(nReps=4.0, method='random', 
+        extraInfo=expInfo, originPath=-1,
+        trialList=[None],
+        seed=None, name='trials')
+    thisExp.addLoop(trials)  # add the loop to the experiment
+    thisTrial = trials.trialList[0]  # so we can initialise stimuli with some values
+    # abbreviate parameter names if possible (e.g. rgb = thisTrial.rgb)
+    if thisTrial != None:
+        for paramName in thisTrial:
+            exec('{} = thisTrial[paramName]'.format(paramName))
     
-    # --- Run Routine "grating_acuity" ---
-    while continueRoutine:
-        # get current time
-        t = routineTimer.getTime()
-        tThisFlip = win.getFutureFlipTime(clock=routineTimer)
-        tThisFlipGlobal = win.getFutureFlipTime(clock=None)
-        frameN = frameN + 1  # number of completed frames (so 0 is the first frame)
-        # update/draw components on each frame
+    for thisTrial in trials:
+        currentLoop = trials
+        # abbreviate parameter names if possible (e.g. rgb = thisTrial.rgb)
+        if thisTrial != None:
+            for paramName in thisTrial:
+                exec('{} = thisTrial[paramName]'.format(paramName))
         
-        # *GA* updates
-        if GA.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
-            # keep track of start time/frame for later
-            GA.frameNStart = frameN  # exact frame index
-            GA.tStart = t  # local t and not account for scr refresh
-            GA.tStartRefresh = tThisFlipGlobal  # on global time
-            win.timeOnFlip(GA, 'tStartRefresh')  # time at next scr refresh
-            GA.setAutoDraw(True)
-        if GA.status == STARTED:
-            # is it time to stop? (based on global clock, using actual start)
-            if tThisFlipGlobal > GA.tStartRefresh + 5-frameTolerance:
-                # keep track of stop time/frame for later
-                GA.tStop = t  # not accounting for scr refresh
-                GA.frameNStop = frameN  # exact frame index
-                GA.setAutoDraw(False)
-        
-# *aperture* updates
-        if aperture.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
-            # keep track of start time/frame for later
-            aperture.frameNStart = frameN  # exact frame index
-            aperture.tStart = t  # local t and not account for scr refresh
-            aperture.tStartRefresh = tThisFlipGlobal  # on global time
-            win.timeOnFlip(aperture, 'tStartRefresh')  # time at next scr refresh
-            # add timestamp to datafile
-            thisExp.timestampOnFlip(win, 'aperture.started')
-            aperture.enabled = True
-        if aperture.status == STARTED:
-            # is it time to stop? (based on global clock, using actual start)
-            if tThisFlipGlobal > aperture.tStartRefresh + 5.0-frameTolerance:
-                # keep track of stop time/frame for later
-                aperture.tStop = t  # not accounting for scr refresh
-                aperture.frameNStop = frameN  # exact frame index
-                # add timestamp to datafile
-                thisExp.timestampOnFlip(win, 'aperture.stopped')
-                aperture.enabled = False
-        
-        # check for quit (typically the Esc key)
-        if endExpNow or defaultKeyboard.getKeys(keyList=["escape"]):
-            core.quit()
-        
-        # check if all components have finished
-        if not continueRoutine:  # a component has requested a forced-end of Routine
-            break
-        continueRoutine = False  # will revert to True if at least one component still running
+        # --- Prepare to start Routine "grating_acuity" ---
+        continueRoutine = True
+        # update component parameters for each repeat
+        position = (randchoice([-1, 1])*16, 0)  # Set routine start values for position
+        GA.setPos(position)
+        GA.setSF(spatial_freq)
+        aperture.setPos(position)
+        spatial_freq = spatial_freq+float(expInfo['step spatial freq'])  # Set routine start values for spatial_freq
+        # keep track of which components have finished
+        grating_acuityComponents = [GA, aperture]
         for thisComponent in grating_acuityComponents:
-            if hasattr(thisComponent, "status") and thisComponent.status != FINISHED:
-                continueRoutine = True
-                break  # at least one component has not yet finished
+            thisComponent.tStart = None
+            thisComponent.tStop = None
+            thisComponent.tStartRefresh = None
+            thisComponent.tStopRefresh = None
+            if hasattr(thisComponent, 'status'):
+                thisComponent.status = NOT_STARTED
+        # reset timers
+        t = 0
+        _timeToFirstFrame = win.getFutureFlipTime(clock="now")
+        frameN = -1
         
-        # refresh the screen
-        if continueRoutine:  # don't flip if this routine is over or we'll get a blank screen
-            win.flip()
-    
-    # --- Ending Routine "grating_acuity" ---
-    for thisComponent in grating_acuityComponents:
-        if hasattr(thisComponent, "setAutoDraw"):
-            thisComponent.setAutoDraw(False)
-    thisExp.addData('position.routineEndVal', position)  # Save end routine value
-    aperture.enabled = False  # just in case it was left enabled
-    thisExp.addData('spatial_freq.routineEndVal', spatial_freq)  # Save end routine value
-    # the Routine "grating_acuity" was not non-slip safe, so reset the non-slip timer
-    routineTimer.reset()
-    
-    # --- Prepare to start Routine "central_fixation" ---
-    continueRoutine = True
-    # update component parameters for each repeat
-    # keep track of which components have finished
-    central_fixationComponents = [placeholder]
-    for thisComponent in central_fixationComponents:
-        thisComponent.tStart = None
-        thisComponent.tStop = None
-        thisComponent.tStartRefresh = None
-        thisComponent.tStopRefresh = None
-        if hasattr(thisComponent, 'status'):
-            thisComponent.status = NOT_STARTED
-    # reset timers
-    t = 0
-    _timeToFirstFrame = win.getFutureFlipTime(clock="now")
-    frameN = -1
-    
-    # --- Run Routine "central_fixation" ---
-    while continueRoutine and routineTimer.getTime() < 1.0:
-        # get current time
-        t = routineTimer.getTime()
-        tThisFlip = win.getFutureFlipTime(clock=routineTimer)
-        tThisFlipGlobal = win.getFutureFlipTime(clock=None)
-        frameN = frameN + 1  # number of completed frames (so 0 is the first frame)
-        # update/draw components on each frame
-        
-        # *placeholder* updates
-        if placeholder.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
-            # keep track of start time/frame for later
-            placeholder.frameNStart = frameN  # exact frame index
-            placeholder.tStart = t  # local t and not account for scr refresh
-            placeholder.tStartRefresh = tThisFlipGlobal  # on global time
-            win.timeOnFlip(placeholder, 'tStartRefresh')  # time at next scr refresh
-            # add timestamp to datafile
-            thisExp.timestampOnFlip(win, 'placeholder.started')
-            placeholder.setAutoDraw(True)
-        if placeholder.status == STARTED:
-            # is it time to stop? (based on global clock, using actual start)
-            if tThisFlipGlobal > placeholder.tStartRefresh + 1.0-frameTolerance:
-                # keep track of stop time/frame for later
-                placeholder.tStop = t  # not accounting for scr refresh
-                placeholder.frameNStop = frameN  # exact frame index
+        # --- Run Routine "grating_acuity" ---
+        while continueRoutine:
+            # get current time
+            t = routineTimer.getTime()
+            tThisFlip = win.getFutureFlipTime(clock=routineTimer)
+            tThisFlipGlobal = win.getFutureFlipTime(clock=None)
+            frameN = frameN + 1  # number of completed frames (so 0 is the first frame)
+            # update/draw components on each frame
+            
+            # *GA* updates
+            if GA.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+                # keep track of start time/frame for later
+                GA.frameNStart = frameN  # exact frame index
+                GA.tStart = t  # local t and not account for scr refresh
+                GA.tStartRefresh = tThisFlipGlobal  # on global time
+                win.timeOnFlip(GA, 'tStartRefresh')  # time at next scr refresh
+                GA.setAutoDraw(True)
+            if GA.status == STARTED:
+                # is it time to stop? (based on global clock, using actual start)
+                if tThisFlipGlobal > GA.tStartRefresh + 5-frameTolerance:
+                    # keep track of stop time/frame for later
+                    GA.tStop = t  # not accounting for scr refresh
+                    GA.frameNStop = frameN  # exact frame index
+                    GA.setAutoDraw(False)
+            
+# *aperture* updates
+            if aperture.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+                # keep track of start time/frame for later
+                aperture.frameNStart = frameN  # exact frame index
+                aperture.tStart = t  # local t and not account for scr refresh
+                aperture.tStartRefresh = tThisFlipGlobal  # on global time
+                win.timeOnFlip(aperture, 'tStartRefresh')  # time at next scr refresh
                 # add timestamp to datafile
-                thisExp.timestampOnFlip(win, 'placeholder.stopped')
-                placeholder.setAutoDraw(False)
+                thisExp.timestampOnFlip(win, 'aperture.started')
+                aperture.enabled = True
+            if aperture.status == STARTED:
+                # is it time to stop? (based on global clock, using actual start)
+                if tThisFlipGlobal > aperture.tStartRefresh + 5.0-frameTolerance:
+                    # keep track of stop time/frame for later
+                    aperture.tStop = t  # not accounting for scr refresh
+                    aperture.frameNStop = frameN  # exact frame index
+                    # add timestamp to datafile
+                    thisExp.timestampOnFlip(win, 'aperture.stopped')
+                    aperture.enabled = False
+            
+            # check for quit (typically the Esc key)
+            if endExpNow or defaultKeyboard.getKeys(keyList=["escape"]):
+                core.quit()
+            
+            # check if all components have finished
+            if not continueRoutine:  # a component has requested a forced-end of Routine
+                break
+            continueRoutine = False  # will revert to True if at least one component still running
+            for thisComponent in grating_acuityComponents:
+                if hasattr(thisComponent, "status") and thisComponent.status != FINISHED:
+                    continueRoutine = True
+                    break  # at least one component has not yet finished
+            
+            # refresh the screen
+            if continueRoutine:  # don't flip if this routine is over or we'll get a blank screen
+                win.flip()
         
-        # check for quit (typically the Esc key)
-        if endExpNow or defaultKeyboard.getKeys(keyList=["escape"]):
-            core.quit()
+        # --- Ending Routine "grating_acuity" ---
+        for thisComponent in grating_acuityComponents:
+            if hasattr(thisComponent, "setAutoDraw"):
+                thisComponent.setAutoDraw(False)
+        thisExp.addData('position.routineEndVal', position)  # Save end routine value
+        aperture.enabled = False  # just in case it was left enabled
+        thisExp.addData('spatial_freq.routineEndVal', spatial_freq)  # Save end routine value
+        # the Routine "grating_acuity" was not non-slip safe, so reset the non-slip timer
+        routineTimer.reset()
         
-        # check if all components have finished
-        if not continueRoutine:  # a component has requested a forced-end of Routine
-            break
-        continueRoutine = False  # will revert to True if at least one component still running
+        # --- Prepare to start Routine "central_fixation" ---
+        continueRoutine = True
+        # update component parameters for each repeat
+        # keep track of which components have finished
+        central_fixationComponents = [placeholder]
         for thisComponent in central_fixationComponents:
-            if hasattr(thisComponent, "status") and thisComponent.status != FINISHED:
-                continueRoutine = True
-                break  # at least one component has not yet finished
+            thisComponent.tStart = None
+            thisComponent.tStop = None
+            thisComponent.tStartRefresh = None
+            thisComponent.tStopRefresh = None
+            if hasattr(thisComponent, 'status'):
+                thisComponent.status = NOT_STARTED
+        # reset timers
+        t = 0
+        _timeToFirstFrame = win.getFutureFlipTime(clock="now")
+        frameN = -1
         
-        # refresh the screen
-        if continueRoutine:  # don't flip if this routine is over or we'll get a blank screen
-            win.flip()
+        # --- Run Routine "central_fixation" ---
+        while continueRoutine and routineTimer.getTime() < 1.0:
+            # get current time
+            t = routineTimer.getTime()
+            tThisFlip = win.getFutureFlipTime(clock=routineTimer)
+            tThisFlipGlobal = win.getFutureFlipTime(clock=None)
+            frameN = frameN + 1  # number of completed frames (so 0 is the first frame)
+            # update/draw components on each frame
+            
+            # *placeholder* updates
+            if placeholder.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+                # keep track of start time/frame for later
+                placeholder.frameNStart = frameN  # exact frame index
+                placeholder.tStart = t  # local t and not account for scr refresh
+                placeholder.tStartRefresh = tThisFlipGlobal  # on global time
+                win.timeOnFlip(placeholder, 'tStartRefresh')  # time at next scr refresh
+                # add timestamp to datafile
+                thisExp.timestampOnFlip(win, 'placeholder.started')
+                placeholder.setAutoDraw(True)
+            if placeholder.status == STARTED:
+                # is it time to stop? (based on global clock, using actual start)
+                if tThisFlipGlobal > placeholder.tStartRefresh + 1.0-frameTolerance:
+                    # keep track of stop time/frame for later
+                    placeholder.tStop = t  # not accounting for scr refresh
+                    placeholder.frameNStop = frameN  # exact frame index
+                    # add timestamp to datafile
+                    thisExp.timestampOnFlip(win, 'placeholder.stopped')
+                    placeholder.setAutoDraw(False)
+            
+            # check for quit (typically the Esc key)
+            if endExpNow or defaultKeyboard.getKeys(keyList=["escape"]):
+                core.quit()
+            
+            # check if all components have finished
+            if not continueRoutine:  # a component has requested a forced-end of Routine
+                break
+            continueRoutine = False  # will revert to True if at least one component still running
+            for thisComponent in central_fixationComponents:
+                if hasattr(thisComponent, "status") and thisComponent.status != FINISHED:
+                    continueRoutine = True
+                    break  # at least one component has not yet finished
+            
+            # refresh the screen
+            if continueRoutine:  # don't flip if this routine is over or we'll get a blank screen
+                win.flip()
+        
+        # --- Ending Routine "central_fixation" ---
+        for thisComponent in central_fixationComponents:
+            if hasattr(thisComponent, "setAutoDraw"):
+                thisComponent.setAutoDraw(False)
+        # using non-slip timing so subtract the expected duration of this Routine
+        routineTimer.addTime(-1.000000)
+        thisExp.nextEntry()
+        
+    # completed 4.0 repeats of 'trials'
     
-    # --- Ending Routine "central_fixation" ---
-    for thisComponent in central_fixationComponents:
-        if hasattr(thisComponent, "setAutoDraw"):
-            thisComponent.setAutoDraw(False)
-    # using non-slip timing so subtract the expected duration of this Routine
-    routineTimer.addTime(-1.000000)
 # completed (float(expInfo['end spatial freq'])-float(expInfo['start spatial freq']))//float(expInfo['step spatial freq']) repeats of 'GA_loop'
 
 
