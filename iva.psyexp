@@ -200,6 +200,7 @@
         <Param val="" valType="num" updates="constant" name="wrapWidth"/>
       </TextComponent>
     </Routine>
+    <Routine name="set_values"/>
   </Routines>
   <Flow>
     <LoopInitiator loopType="TrialHandler" name="GA_loop">
@@ -213,6 +214,7 @@
       <Param name="name" updates="None" val="GA_loop" valType="code"/>
       <Param name="random seed" updates="None" val="" valType="code"/>
     </LoopInitiator>
+    <Routine name="set_values"/>
     <LoopInitiator loopType="TrialHandler" name="trials">
       <Param name="Selected rows" updates="None" val="" valType="str"/>
       <Param name="conditions" updates="None" val="None" valType="str"/>
