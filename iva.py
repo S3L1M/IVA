@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2022.2.1),
-    on August 04, 2022, at 22:26
+    on August 04, 2022, at 22:28
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -98,6 +98,9 @@ eyetracker = None
 defaultKeyboard = keyboard.Keyboard(backend='iohub')
 
 # --- Initialize components for Routine "set_values" ---
+# Set experiment start values for variable component spatial_freq
+spatial_freq = float(expInfo['start spatial freq'])
+spatial_freqContainer = []
 
 # --- Initialize components for Routine "grating_acuity" ---
 # Set experiment start values for variable component position
@@ -116,9 +119,6 @@ aperture = visual.Aperture(
     shape='circle', anchor='center'
 )
 aperture.disable()  # disable until its actually used
-# Set experiment start values for variable component spatial_freq
-spatial_freq = float(expInfo['start spatial freq'])
-spatial_freqContainer = []
 
 # --- Initialize components for Routine "central_fixation" ---
 placeholder = visual.TextStim(win=win, name='placeholder',
@@ -155,6 +155,7 @@ for thisGA_loop in GA_loop:
     # --- Prepare to start Routine "set_values" ---
     continueRoutine = True
     # update component parameters for each repeat
+    spatial_freq = spatial_freq+float(expInfo['step spatial freq'])  # Set routine start values for spatial_freq
     # keep track of which components have finished
     set_valuesComponents = []
     for thisComponent in set_valuesComponents:
@@ -199,6 +200,7 @@ for thisGA_loop in GA_loop:
     for thisComponent in set_valuesComponents:
         if hasattr(thisComponent, "setAutoDraw"):
             thisComponent.setAutoDraw(False)
+    thisExp.addData('spatial_freq.routineEndVal', spatial_freq)  # Save end routine value
     # the Routine "set_values" was not non-slip safe, so reset the non-slip timer
     routineTimer.reset()
     
@@ -228,7 +230,6 @@ for thisGA_loop in GA_loop:
         GA.setPos(position)
         GA.setSF(spatial_freq)
         aperture.setPos(position)
-        spatial_freq = spatial_freq+float(expInfo['step spatial freq'])  # Set routine start values for spatial_freq
         # keep track of which components have finished
         grating_acuityComponents = [GA, aperture]
         for thisComponent in grating_acuityComponents:
@@ -311,7 +312,6 @@ for thisGA_loop in GA_loop:
                 thisComponent.setAutoDraw(False)
         thisExp.addData('position.routineEndVal', position)  # Save end routine value
         aperture.enabled = False  # just in case it was left enabled
-        thisExp.addData('spatial_freq.routineEndVal', spatial_freq)  # Save end routine value
         # the Routine "grating_acuity" was not non-slip safe, so reset the non-slip timer
         routineTimer.reset()
         
