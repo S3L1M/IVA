@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2022.2.1),
-    on August 04, 2022, at 22:28
+    on August 04, 2022, at 22:30
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -99,7 +99,7 @@ defaultKeyboard = keyboard.Keyboard(backend='iohub')
 
 # --- Initialize components for Routine "set_values" ---
 # Set experiment start values for variable component spatial_freq
-spatial_freq = float(expInfo['start spatial freq'])
+spatial_freq = float(expInfo['start spatial freq'])-float(expInfo['step spatial freq'])
 spatial_freqContainer = []
 
 # --- Initialize components for Routine "grating_acuity" ---

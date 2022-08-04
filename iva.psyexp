@@ -192,7 +192,7 @@
         <Param val="False" valType="bool" updates="constant" name="saveStartRoutine"/>
         <Param val="True" valType="bool" updates="None" name="saveStartStop"/>
         <Param val="" valType="code" updates="None" name="startEstim"/>
-        <Param val="float(expInfo['start spatial freq'])" valType="code" updates="constant" name="startExpValue"/>
+        <Param val="float(expInfo['start spatial freq'])-float(expInfo['step spatial freq'])" valType="code" updates="constant" name="startExpValue"/>
         <Param val="" valType="code" updates="None" name="startFrameValue"/>
         <Param val="spatial_freq+float(expInfo['step spatial freq'])" valType="code" updates="constant" name="startRoutineValue"/>
         <Param val="time (s)" valType="str" updates="None" name="startType"/>
