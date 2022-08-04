@@ -97,7 +97,7 @@
         <Param val="" valType="code" updates="None" name="startEstim"/>
         <Param val="(0, 0)" valType="code" updates="constant" name="startExpValue"/>
         <Param val="" valType="code" updates="None" name="startFrameValue"/>
-        <Param val="(randchoice([-1, 1])*16, 0)" valType="code" updates="constant" name="startRoutineValue"/>
+        <Param val="(randchoice([-1, 1])*16, randchoice([-1, 1])*7)" valType="code" updates="constant" name="startRoutineValue"/>
         <Param val="time (s)" valType="str" updates="None" name="startType"/>
         <Param val="" valType="code" updates="None" name="startVal"/>
         <Param val="duration (s)" valType="str" updates="None" name="stopType"/>
