@@ -1,8 +1,8 @@
-﻿#!/usr/bin/env python
+#!/usr/bin/env python
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2022.2.1),
-    on August 02, 2022, at 23:58
+    on August 04, 2022, at 10:56
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -98,6 +98,9 @@ eyetracker = None
 defaultKeyboard = keyboard.Keyboard(backend='iohub')
 
 # --- Initialize components for Routine "grating_acuity" ---
+# Set experiment start values for variable component pos_list
+pos_list = {'right':(16,0), 'left':(-16,0), 'top-right':(16,7), 'top-left':(-16, 7), 'bottom-right':(16,-7), 'bottom-left':(-16, -7)}
+pos_listContainer = []
 # Set experiment start values for variable component position
 position = (0, 0)
 positionContainer = []
@@ -107,7 +110,7 @@ GA = visual.GratingStim(
     ori=0.0, pos=[0,0], size=(float(expInfo['stimulus size']), float(expInfo['stimulus size'])), sf=1.0, phase=0.0,
     color=[1,1,1], colorSpace='rgb',
     opacity=None, contrast=1.0, blendmode='avg',
-    texRes=512.0, interpolate=True, depth=-1.0)
+    texRes=512.0, interpolate=True, depth=-2.0)
 aperture = visual.Aperture(
     win=win, name='aperture',
     units='deg', size=[float(expInfo['stimulus size'])], pos=[0,0], ori=0.0,
@@ -117,6 +120,7 @@ aperture.disable()  # disable until its actually used
 # Set experiment start values for variable component spatial_freq
 spatial_freq = float(expInfo['start spatial freq'])
 spatial_freqContainer = []
+key_resp = keyboard.Keyboard()
 
 # --- Initialize components for Routine "central_fixation" ---
 placeholder = visual.TextStim(win=win, name='placeholder',
@@ -134,10 +138,10 @@ routineTimer = core.Clock()  # to track time remaining of each (possibly non-sli
 # --------Prepare to start Staircase "GA_loop" --------
 # set up handler to look after next chosen value etc
 GA_loop = data.StairHandler(startVal=float(expInfo['start spatial freq']), extraInfo=expInfo,
-    stepSizes=[0.8,0.8,0.4,0.4,0.2], stepType='log',
-    nReversals=0.0, nTrials=4.0, 
-    nUp=4.0, nDown=2.0,
-    minVal=0.4, maxVal=float(expInfo['end spatial freq']),
+    stepSizes=[-0.8,-0.8,-0.4,-0.4,-0.2], stepType='lin',
+    nReversals=0.0, nTrials=12.0, 
+    nUp=1.0, nDown=2.0,
+    minVal=float(expInfo['start spatial freq']), maxVal=float(expInfo['end spatial freq']),
     originPath=-1, name='GA_loop')
 thisExp.addLoop(GA_loop)  # add the loop to the experiment
 level = thisGA_loop = float(expInfo['start spatial freq'])  # initialise some vals
@@ -151,11 +155,16 @@ for thisGA_loop in GA_loop:
     # update component parameters for each repeat
     position = (randchoice([-1, 1])*16, 0)  # Set routine start values for position
     GA.setPos(position)
-    GA.setSF(spatial_freq)
+    GA.setSF(level if level>float(expInfo['start spatial freq']) else float(expInfo['start spatial freq']))
     aperture.setPos(position)
-    spatial_freq = spatial_freq+float(expInfo['step spatial freq'])  # Set routine start values for spatial_freq
+    spatial_freq = level  # Set routine start values for spatial_freq
+    key_resp.keys = []
+    key_resp.rt = []
+    _key_resp_allKeys = []
+    # Run 'Begin Routine' code from set_answer
+    correctAns = 'right' if pos_list['right'] == position else 'left'
     # keep track of which components have finished
-    grating_acuityComponents = [GA, aperture]
+    grating_acuityComponents = [GA, aperture, key_resp]
     for thisComponent in grating_acuityComponents:
         thisComponent.tStart = None
         thisComponent.tStop = None
@@ -213,6 +222,42 @@ for thisGA_loop in GA_loop:
                 thisExp.timestampOnFlip(win, 'aperture.stopped')
                 aperture.enabled = False
         
+        # *key_resp* updates
+        waitOnFlip = False
+        if key_resp.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+            # keep track of start time/frame for later
+            key_resp.frameNStart = frameN  # exact frame index
+            key_resp.tStart = t  # local t and not account for scr refresh
+            key_resp.tStartRefresh = tThisFlipGlobal  # on global time
+            win.timeOnFlip(key_resp, 'tStartRefresh')  # time at next scr refresh
+            # add timestamp to datafile
+            thisExp.timestampOnFlip(win, 'key_resp.started')
+            key_resp.status = STARTED
+            # keyboard checking is just starting
+            waitOnFlip = True
+            win.callOnFlip(key_resp.clock.reset)  # t=0 on next screen flip
+            win.callOnFlip(key_resp.clearEvents, eventType='keyboard')  # clear events on next screen flip
+        if key_resp.status == STARTED:
+            # is it time to stop? (based on global clock, using actual start)
+            if tThisFlipGlobal > key_resp.tStartRefresh + 5.0-frameTolerance:
+                # keep track of stop time/frame for later
+                key_resp.tStop = t  # not accounting for scr refresh
+                key_resp.frameNStop = frameN  # exact frame index
+                # add timestamp to datafile
+                thisExp.timestampOnFlip(win, 'key_resp.stopped')
+                key_resp.status = FINISHED
+        if key_resp.status == STARTED and not waitOnFlip:
+            theseKeys = key_resp.getKeys(keyList=['left','right'], waitRelease=False)
+            _key_resp_allKeys.extend(theseKeys)
+            if len(_key_resp_allKeys):
+                key_resp.keys = _key_resp_allKeys[-1].name  # just the last key pressed
+                key_resp.rt = _key_resp_allKeys[-1].rt
+                # was this correct?
+                if (key_resp.keys == str(correctAns)) or (key_resp.keys == correctAns):
+                    key_resp.corr = 1
+                else:
+                    key_resp.corr = 0
+        
         # check for quit (typically the Esc key)
         if endExpNow or defaultKeyboard.getKeys(keyList=["escape"]):
             core.quit()
@@ -237,6 +282,17 @@ for thisGA_loop in GA_loop:
     thisExp.addData('position.routineEndVal', position)  # Save end routine value
     aperture.enabled = False  # just in case it was left enabled
     thisExp.addData('spatial_freq.routineEndVal', spatial_freq)  # Save end routine value
+    # check responses
+    if key_resp.keys in ['', [], None]:  # No response was made
+        key_resp.keys = None
+        # was no response the correct answer?!
+        if str(correctAns).lower() == 'none':
+           key_resp.corr = 1;  # correct non-response
+        else:
+           key_resp.corr = 0;  # failed to respond (incorrectly)
+    # store data for GA_loop (StairHandler)
+    GA_loop.addResponse(key_resp.corr, level)
+    GA_loop.addOtherData('key_resp.rt', key_resp.rt)
     # the Routine "grating_acuity" was not non-slip safe, so reset the non-slip timer
     routineTimer.reset()
     
@@ -309,6 +365,8 @@ for thisGA_loop in GA_loop:
             thisComponent.setAutoDraw(False)
     # using non-slip timing so subtract the expected duration of this Routine
     routineTimer.addTime(-1.000000)
+    thisExp.nextEntry()
+    
 # staircase completed
 
 
