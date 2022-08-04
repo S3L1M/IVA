@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2022.2.1),
-    on August 04, 2022, at 11:01
+    on August 04, 2022, at 21:24
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -152,7 +152,7 @@ for thisGA_loop in GA_loop:
     # --- Prepare to start Routine "grating_acuity" ---
     continueRoutine = True
     # update component parameters for each repeat
-    position = (randchoice([-1, 1])*16, 0)  # Set routine start values for position
+    position = (randchoice([-1, 1])*16, randchoice([-1, 1])*7)  # Set routine start values for position
     GA.setPos(position)
     GA.setSF(level if level>float(expInfo['start spatial freq']) else float(expInfo['start spatial freq']))
     aperture.setPos(position)
@@ -161,7 +161,10 @@ for thisGA_loop in GA_loop:
     key_resp.rt = []
     _key_resp_allKeys = []
     # Run 'Begin Routine' code from set_answer
-    correctAns = 'right' if pos_list['right'] == position else 'left'
+    if position == pos_list['top-right']: correctAns='w'
+    if position == pos_list['top-left']: correctAns='q'
+    if position == pos_list['bottom-right']: correctAns='s'
+    if position == pos_list['bottom-left']: correctAns='a'
     # keep track of which components have finished
     grating_acuityComponents = [GA, aperture, key_resp]
     for thisComponent in grating_acuityComponents:
@@ -246,7 +249,7 @@ for thisGA_loop in GA_loop:
                 thisExp.timestampOnFlip(win, 'key_resp.stopped')
                 key_resp.status = FINISHED
         if key_resp.status == STARTED and not waitOnFlip:
-            theseKeys = key_resp.getKeys(keyList=['left','right'], waitRelease=False)
+            theseKeys = key_resp.getKeys(keyList=['q','w','a','s'], waitRelease=False)
             _key_resp_allKeys.extend(theseKeys)
             if len(_key_resp_allKeys):
                 key_resp.keys = _key_resp_allKeys[-1].name  # just the last key pressed

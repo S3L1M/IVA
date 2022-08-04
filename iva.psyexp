@@ -97,7 +97,7 @@
         <Param val="" valType="code" updates="None" name="startEstim"/>
         <Param val="(0, 0)" valType="code" updates="constant" name="startExpValue"/>
         <Param val="" valType="code" updates="None" name="startFrameValue"/>
-        <Param val="(randchoice([-1, 1])*16, 0)" valType="code" updates="constant" name="startRoutineValue"/>
+        <Param val="(randchoice([-1, 1])*16, randchoice([-1, 1])*7)" valType="code" updates="constant" name="startRoutineValue"/>
         <Param val="time (s)" valType="str" updates="None" name="startType"/>
         <Param val="" valType="code" updates="None" name="startVal"/>
         <Param val="duration (s)" valType="str" updates="None" name="stopType"/>
@@ -173,7 +173,7 @@
         <Param val="False" valType="bool" updates="None" name="syncScreenRefresh"/>
       </VariableComponent>
       <KeyboardComponent name="key_resp">
-        <Param val="'left','right'" valType="list" updates="constant" name="allowedKeys"/>
+        <Param val="'q','w','a','s'" valType="list" updates="constant" name="allowedKeys"/>
         <Param val="$correctAns" valType="str" updates="constant" name="correctAns"/>
         <Param val="False" valType="bool" updates="None" name="disabled"/>
         <Param val="True" valType="bool" updates="constant" name="discard previous"/>
@@ -195,8 +195,8 @@
         <Param val="" valType="extendedCode" updates="constant" name="Before JS Experiment"/>
         <Param val="" valType="extendedCode" updates="constant" name="Begin Experiment"/>
         <Param val="" valType="extendedCode" updates="constant" name="Begin JS Experiment"/>
-        <Param val="correctAns = ((pos_list[&quot;right&quot;] === position) ? &quot;right&quot; : &quot;left&quot;);&amp;#10;" valType="extendedCode" updates="constant" name="Begin JS Routine"/>
-        <Param val="correctAns = 'right' if pos_list['right'] == position else 'left'" valType="extendedCode" updates="constant" name="Begin Routine"/>
+        <Param val="if ((position === pos_list[&quot;top-right&quot;])) {&amp;#10;    correctAns = &quot;w&quot;;&amp;#10;}&amp;#10;if ((position === pos_list[&quot;top-left&quot;])) {&amp;#10;    correctAns = &quot;q&quot;;&amp;#10;}&amp;#10;if ((position === pos_list[&quot;bottom-right&quot;])) {&amp;#10;    correctAns = &quot;s&quot;;&amp;#10;}&amp;#10;if ((position === pos_list[&quot;bottom-left&quot;])) {&amp;#10;    correctAns = &quot;a&quot;;&amp;#10;}&amp;#10;" valType="extendedCode" updates="constant" name="Begin JS Routine"/>
+        <Param val="if position == pos_list['top-right']: correctAns='w'&amp;#10;if position == pos_list['top-left']: correctAns='q'&amp;#10;if position == pos_list['bottom-right']: correctAns='s'&amp;#10;if position == pos_list['bottom-left']: correctAns='a'" valType="extendedCode" updates="constant" name="Begin Routine"/>
         <Param val="Auto-&gt;JS" valType="str" updates="None" name="Code Type"/>
         <Param val="" valType="extendedCode" updates="constant" name="Each Frame"/>
         <Param val="" valType="extendedCode" updates="constant" name="Each JS Frame"/>
