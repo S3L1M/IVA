@@ -1,8 +1,8 @@
-#!/usr/bin/env python
+﻿#!/usr/bin/env python
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2022.2.1),
-    on August 04, 2022, at 10:56
+    on August 04, 2022, at 11:01
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -41,7 +41,6 @@ expInfo = {
     'session': '001',
     'stimulus size': '8.5',
     'start spatial freq': '0.8',
-    'step spatial freq': '1',
     'end spatial freq': '25.6',
 }
 # --- Show participant info dialog --
