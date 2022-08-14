@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2022.2.1),
-    on August 04, 2022, at 11:01
+    on August 14, 2022, at 04:12
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -42,6 +42,7 @@ expInfo = {
     'stimulus size': '8.5',
     'start spatial freq': '0.8',
     'end spatial freq': '25.6',
+    'stimulus duration': '1',
 }
 # --- Show participant info dialog --
 dlg = gui.DlgFromDict(dictionary=expInfo, sortKeys=False, title=expName)
@@ -57,7 +58,7 @@ filename = _thisDir + os.sep + u'data/%s_%s_%s' % (expInfo['participant'], expNa
 # An ExperimentHandler isn't essential but helps with data saving
 thisExp = data.ExperimentHandler(name=expName, version='',
     extraInfo=expInfo, runtimeInfo=None,
-    originPath='C:\\Users\\mohamedselim\\Desktop\\GSoC\\IVA\\iva.py',
+    originPath='C:\\Users\\mohamedselim\\Desktop\\GSoC\\IVA\\iva_stair_2.py',
     savePickle=True, saveWideText=False,
     dataFileName=filename)
 logging.console.setLevel(logging.WARNING)  # this outputs to the screen, not a file
@@ -195,7 +196,7 @@ for thisGA_loop in GA_loop:
             GA.setAutoDraw(True)
         if GA.status == STARTED:
             # is it time to stop? (based on global clock, using actual start)
-            if tThisFlipGlobal > GA.tStartRefresh + 5-frameTolerance:
+            if tThisFlipGlobal > GA.tStartRefresh + float(expInfo["stimulus duration"])-frameTolerance:
                 # keep track of stop time/frame for later
                 GA.tStop = t  # not accounting for scr refresh
                 GA.frameNStop = frameN  # exact frame index
@@ -213,7 +214,7 @@ for thisGA_loop in GA_loop:
             aperture.enabled = True
         if aperture.status == STARTED:
             # is it time to stop? (based on global clock, using actual start)
-            if tThisFlipGlobal > aperture.tStartRefresh + 5.0-frameTolerance:
+            if tThisFlipGlobal > aperture.tStartRefresh + float(expInfo["stimulus duration"])-frameTolerance:
                 # keep track of stop time/frame for later
                 aperture.tStop = t  # not accounting for scr refresh
                 aperture.frameNStop = frameN  # exact frame index
@@ -238,7 +239,7 @@ for thisGA_loop in GA_loop:
             win.callOnFlip(key_resp.clearEvents, eventType='keyboard')  # clear events on next screen flip
         if key_resp.status == STARTED:
             # is it time to stop? (based on global clock, using actual start)
-            if tThisFlipGlobal > key_resp.tStartRefresh + 5.0-frameTolerance:
+            if tThisFlipGlobal > key_resp.tStartRefresh + float(expInfo["stimulus duration"])-frameTolerance:
                 # keep track of stop time/frame for later
                 key_resp.tStop = t  # not accounting for scr refresh
                 key_resp.frameNStop = frameN  # exact frame index
