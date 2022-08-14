@@ -2,11 +2,9 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2022.2.1),
-<<<<<<< HEAD:iva_linear_2.py
     on August 04, 2022, at 22:30
 =======
     on August 04, 2022, at 22:43
->>>>>>> constant-4-quadrant:iva_linear_4.py
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -230,11 +228,7 @@ for thisGA_loop in GA_loop:
         # --- Prepare to start Routine "grating_acuity" ---
         continueRoutine = True
         # update component parameters for each repeat
-<<<<<<< HEAD:iva_linear_2.py
         position = (randchoice([-1, 1])*16, 0)  # Set routine start values for position
-=======
-        position = (randchoice([-1, 1])*16, randchoice([-1, 1])*7)  # Set routine start values for position
->>>>>>> constant-4-quadrant:iva_linear_4.py
         GA.setPos(position)
         GA.setSF(spatial_freq)
         aperture.setPos(position)
