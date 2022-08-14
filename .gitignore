@@ -2,4 +2,4 @@
 data/
 
 # PsychoPy auto-gen Python code
-iva_lastrun.py
+iva*_lastrun.py
