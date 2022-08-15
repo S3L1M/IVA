@@ -113,7 +113,7 @@
         <Param val="False" valType="bool" updates="None" name="disabled"/>
         <Param val="" valType="code" updates="None" name="durationEstim"/>
         <Param val="linear" valType="str" updates="constant" name="interpolate"/>
-        <Param val="" valType="file" updates="constant" name="mask"/>
+        <Param val="gauss" valType="file" updates="constant" name="mask"/>
         <Param val="GA" valType="code" updates="None" name="name"/>
         <Param val="" valType="num" updates="constant" name="opacity"/>
         <Param val="0" valType="num" updates="constant" name="ori"/>
@@ -121,7 +121,7 @@
         <Param val="position" valType="list" updates="set every repeat" name="pos"/>
         <Param val="False" valType="bool" updates="None" name="saveStartStop"/>
         <Param val="spatial_freq" valType="num" updates="set every repeat" name="sf"/>
-        <Param val="(float(expInfo['stimulus size']), float(expInfo['stimulus size']))" valType="list" updates="constant" name="size"/>
+        <Param val="(float(expInfo['stimulus size']), float(expInfo['stimulus size']))], maskParams={'sd':2}, #" valType="list" updates="constant" name="size"/>
         <Param val="" valType="code" updates="None" name="startEstim"/>
         <Param val="time (s)" valType="str" updates="None" name="startType"/>
         <Param val="0.0" valType="code" updates="None" name="startVal"/>
