@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2022.2.1),
-    on August 18, 2022, at 09:53
+    on August 18, 2022, at 10:42
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -59,7 +59,7 @@ filename = _thisDir + os.sep + u'data/%s_%s_%s' % (expInfo['participant'], expNa
 # An ExperimentHandler isn't essential but helps with data saving
 thisExp = data.ExperimentHandler(name=expName, version='',
     extraInfo=expInfo, runtimeInfo=None,
-    originPath='C:\\Users\\mohamedselim\\Desktop\\GSoC\\IVA\\iva_linear_4_gauss.py',
+    originPath='C:\\Users\\mohamedselim\\Desktop\\GSoC\\IVA\\linear 4q gauss\\iva_linear_4_gauss.py',
     savePickle=True, saveWideText=True,
     dataFileName=filename)
 # save a log file for detail verbose info
@@ -112,7 +112,7 @@ positionContainer = []
 GA = visual.GratingStim(
     win=win, name='GA',units='deg', 
     tex='sqr', mask='gauss', anchor='center',
-    ori=0.0, pos=[0,0], size=[(float(expInfo['stimulus size']), float(expInfo['stimulus size']))], maskParams={'sd':2}, #], sf=1.0, phase=0.0,
+    ori=0.0, pos=[0,0], size=(float(expInfo['stimulus size']), float(expInfo['stimulus size'])), sf=1.0, phase=0.0,
     color=[1,1,1], colorSpace='rgb',
     opacity=None, contrast=1.0, blendmode='avg',
     texRes=512.0, interpolate=True, depth=-1.0)
@@ -159,6 +159,8 @@ for thisGA_loop in GA_loop:
     continueRoutine = True
     # update component parameters for each repeat
     spatial_freq = spatial_freq+float(expInfo['step spatial freq'])  # Set routine start values for spatial_freq
+    # Run 'Begin Routine' code from gaussian_SD
+    GA.maskParams = {'sd': 2}
     # keep track of which components have finished
     set_valuesComponents = []
     for thisComponent in set_valuesComponents:

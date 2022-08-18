@@ -121,7 +121,7 @@
         <Param val="position" valType="list" updates="set every repeat" name="pos"/>
         <Param val="False" valType="bool" updates="None" name="saveStartStop"/>
         <Param val="spatial_freq" valType="num" updates="set every repeat" name="sf"/>
-        <Param val="(float(expInfo['stimulus size']), float(expInfo['stimulus size']))], maskParams={'sd':2}, #" valType="list" updates="constant" name="size"/>
+        <Param val="(float(expInfo['stimulus size']), float(expInfo['stimulus size']))" valType="list" updates="constant" name="size"/>
         <Param val="" valType="code" updates="None" name="startEstim"/>
         <Param val="time (s)" valType="str" updates="None" name="startType"/>
         <Param val="0.0" valType="code" updates="None" name="startVal"/>
@@ -201,6 +201,23 @@
         <Param val="0.0" valType="code" updates="constant" name="stopVal"/>
         <Param val="False" valType="bool" updates="None" name="syncScreenRefresh"/>
       </VariableComponent>
+      <CodeComponent name="gaussian_SD">
+        <Param val="" valType="extendedCode" updates="constant" name="Before Experiment"/>
+        <Param val="" valType="extendedCode" updates="constant" name="Before JS Experiment"/>
+        <Param val="" valType="extendedCode" updates="constant" name="Begin Experiment"/>
+        <Param val="" valType="extendedCode" updates="constant" name="Begin JS Experiment"/>
+        <Param val="GA.maskParams = {&quot;sd&quot;: 2};&amp;#10;" valType="extendedCode" updates="constant" name="Begin JS Routine"/>
+        <Param val="GA.maskParams = {'sd': 2}" valType="extendedCode" updates="constant" name="Begin Routine"/>
+        <Param val="Auto-&gt;JS" valType="str" updates="None" name="Code Type"/>
+        <Param val="" valType="extendedCode" updates="constant" name="Each Frame"/>
+        <Param val="" valType="extendedCode" updates="constant" name="Each JS Frame"/>
+        <Param val="" valType="extendedCode" updates="constant" name="End Experiment"/>
+        <Param val="" valType="extendedCode" updates="constant" name="End JS Experiment"/>
+        <Param val="" valType="extendedCode" updates="constant" name="End JS Routine"/>
+        <Param val="" valType="extendedCode" updates="constant" name="End Routine"/>
+        <Param val="False" valType="bool" updates="None" name="disabled"/>
+        <Param val="gaussian_SD" valType="code" updates="None" name="name"/>
+      </CodeComponent>
     </Routine>
   </Routines>
   <Flow>
