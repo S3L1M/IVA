@@ -3,3 +3,6 @@ data/
 
 # PsychoPy auto-gen Python code
 iva*_lastrun.py
+
+# PsychoPy auto-gen readme.md
+*/readme.md
