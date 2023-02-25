@@ -1,5 +1,8 @@
 # IVA
 
+## Project description
+This [project](https://summerofcode.withgoogle.com/programs/2022/projects/7fVsdi7Y) is a part of "Project 6.2: Efficient app-based measurement of visual functions in infants and young children" for [GSoC](https://summerofcode.withgoogle.com/) at [INCF](https://www.incf.org/). It includes visual stimuli built with [PsychoPy](https://www.psychopy.org/) as well as PsychJS testing.
+
 ## How to use
 To run the experiment you will need PsychoPy.
 
